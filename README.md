@@ -1,2 +1,5 @@
-# MRTK3-MagicLeap-CameraFeed
-A project based on the latest MRTK3 Magic Leap to easily retrieve camera feed, mainly used for hackathon projects
+## MRTK3-MagicLeap-CameraFeed
+
+This repo is based on 
+https://github.com/magicleap/MixedRealityToolkit-Unity/tree/mrtk3_MagicLeap2
+
