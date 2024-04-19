@@ -3,20 +3,22 @@ using SimpleJSON;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[RequireComponent(typeof(CaptureConnector))]
 public class ServerUnityBridge : MonoBehaviour
 {
-    public Texture2D ImageTest;
-    public string Response;
     public WebViewManager WebViewManager;
+    public string Response;
     public string Feedback = "";
     public float WaitTime = 40;
     private string pythonServerURL = "";
     private string webRequestRefreshURL = "";
     private string responseID = "";
+    private CaptureConnector captureConnector;
+    private string caption;
 
-    public void UploadConnector()
+    private void OnEnable()
     {
-        StartCoroutine(UploadCoroutine(ImageTest));
+        captureConnector = GetComponent<CaptureConnector>();
     }
 
     public void GetResponseConnector()
@@ -39,18 +41,10 @@ public class ServerUnityBridge : MonoBehaviour
         return Feedback;
     }
 
-    [ContextMenu("Upload")]
-    public void Upload()
-    {
-        StartCoroutine(UploadCoroutine(ImageTest));
-    }
-
-    public void UploadRecursive(Texture2D image)
+    public void UploadImageToServer(Texture2D image)
     {
         StartCoroutine(UploadCoroutine(image));
     }
-
-    private string caption;
 
     public IEnumerator UploadCoroutine(Texture2D image)
     {

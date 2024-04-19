@@ -5,24 +5,24 @@ using UnityEngine;
 public class CaptureConnector : MonoBehaviour
 {
     public ServerUnityBridge ServerUnityBridge;
-    public UnityEngine.UI.Image ImageFeedbackUI;
+    public UnityEngine.UI.RawImage ImageFeedbackUI;
     public TextMeshProUGUI ResponseText;
     public TextMeshProUGUI FeedbackText;
 
     void Start()
     {
-        StartCoroutine(MistralRecursive());
+        StartCoroutine(UploadImageTopServerRecursive());
     }
 
-    private bool recordStarted;
-
-    public IEnumerator MistralRecursive()
+    public IEnumerator UploadImageTopServerRecursive()
     {
+        Texture2D texture = ImageFeedbackUI.texture as Texture2D;
         yield return new WaitForSeconds(4);
-        if (ImageFeedbackUI.sprite!=null){
-              ServerUnityBridge.UploadRecursive( ImageFeedbackUI.sprite.texture );
+        if (texture = null)
+        {
+            ServerUnityBridge.UploadImageToServer(texture);
         }
-        StartCoroutine(MistralRecursive());
+        StartCoroutine(UploadImageTopServerRecursive());
     }
 
     void Update()
