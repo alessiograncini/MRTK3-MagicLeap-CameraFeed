@@ -3,34 +3,18 @@ using SimpleJSON;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(CaptureConnector))]
 public class ServerUnityBridge : MonoBehaviour
 {
     public WebViewManager WebViewManager;
     public string Response;
     public string Feedback = "";
-    public float WaitTime = 40;
-    private string pythonServerURL = "";
-    private string webRequestRefreshURL = "";
-    private string responseID = "";
-    private CaptureConnector captureConnector;
+    public float WaitTime = 39;
+    private string pythonServerURL = "http://192.168.68.100:8001/upload-image/";
+    private string responseID;
     private string caption;
-
-    private void OnEnable()
-    {
-        captureConnector = GetComponent<CaptureConnector>();
-    }
-
-    public void GetResponseConnector()
-    {
-        if (string.IsNullOrEmpty(responseID))
-        {
-            Debug.LogError("Response ID is not set. Make sure you've uploaded the image first.");
-            return;
-        }
-        StartCoroutine(GetResponseCoroutine(responseID));
-    }
-
+    private string url;
+    
+    
     public string UpdateResponseConnector()
     {
         return Response;
@@ -64,40 +48,17 @@ public class ServerUnityBridge : MonoBehaviour
             {
                 Debug.Log("Image uploaded successfully!");
                 var jsonResponse = JSON.Parse(www.downloadHandler.text);
-                responseID = jsonResponse["url"]; // Capture the ID returned by the server
-                Debug.Log("Received ID: " + responseID);
+                responseID = jsonResponse["id"]; // Capture the ID returned by the server
                 caption = jsonResponse["caption"];
-                // see in editor
-                Response = caption;
-                yield return new WaitForSeconds(40);
-                WebViewManager.UpdateLink(webRequestRefreshURL);
+                url = jsonResponse["url"];
+                Debug.Log("Received ID: " + responseID);
+                Debug.Log("Received Caption: " + caption);
+                Debug.Log("Received URL: " + url);
+                Response = caption;// see in editor
+                yield return new WaitForSeconds(WaitTime);
+                WebViewManager.UpdateLink("http://192.168.68.100:8001/render/"+responseID);
             }
         }
     }
-
-    private IEnumerator GetResponseCoroutine(string id)
-    {
-        string requestURL = $"{id}";
-
-        while (true)
-        {
-            using (UnityWebRequest www = UnityWebRequest.Get(requestURL))
-            {
-                yield return www.SendWebRequest();
-
-                if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogError($"Error getting response: {www.error}");
-                    break;
-                }
-                else
-                {
-                    yield return new WaitForSeconds(WaitTime);
-                    WebViewManager.UpdateLink(requestURL);
-
-                    Debug.Log("Feedback: " + Feedback);
-                }
-            }
-        }
-    }
+    
 }
