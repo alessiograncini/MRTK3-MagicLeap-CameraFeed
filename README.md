@@ -1,37 +1,53 @@
-## MRTK3-MagicLeap-CameraFeed
+# MRTK3-MagicLeap-CameraFeed
 
-This repo is based on 
-https://github.com/magicleap/MixedRealityToolkit-Unity/tree/mrtk3_MagicLeap2
-And 
-https://devpost.com/software/mistral-oui
+This repository enhances the integration of vision models on Magic Leap 2 devices, utilizing the capabilities of the Mixed Reality Toolkit (MRTK3) based on the following sources:
+- [MRTK3 for Magic Leap 2 on GitHub](https://github.com/magicleap/MixedRealityToolkit-Unity/tree/mrtk3_MagicLeap2)
+- [Mistral Project on Devpost](https://devpost.com/software/mistral-oui)
 
-Aims to have a nice template for Vision models on Magic Leap 2 
+The aim is to provide a robust template for developers to implement advanced vision models in Magic Leap 2 applications.
 
+## Features
+- Integration with the latest MRTK3 updates.
+- Support for dynamic UI generation based on vision model outputs.
+- Efficient handling of high-frequency camera feeds to prevent application crashes.
 
-##How to run it locally 
+## Local Setup
 
-Go into MRTKDevTemplate>server>main.py 
+### Prerequisites
+Ensure you have the following prerequisites installed:
+- Required environment and modules for your project.
+- Credentials for Anthropic and Mistral services.
 
-Make sure you got your environment and module installed 
-Make sure you got the credentials for Anthropic and Mistral in MRTKDevTemplate>server>index.ts
+### Running the Project Locally
 
-Run the main.py server 
+1. **Prepare Your Environment:**
+   - Navigate to `MRTKDevTemplate > server`.
+   - Ensure `main.py` and `index.ts` are properly set up with the necessary credentials and configurations.
 
-Make sure you change the addresses in 
-MRTKDevTemplate>Assets>_Connector>ServerUnityBridge
+2. **Start the Server:**
+   - Run `main.py` to start the server.
 
-Make sure the camera intervals of 
-Assets>_CameraFeed>Scripts>SimpleRGBCamCapture 
-is high to avoid crashes 
+3. **Configure Connections:**
+   - Update the address configurations in `MRTKDevTemplate > Assets > _Connector > ServerUnityBridge`.
 
-#Build and run the APK on device 
+4. **Adjust Camera Settings:**
+   - Modify the camera intervals in `Assets > _CameraFeed > Scripts > SimpleRGBCamCapture` to a high value to ensure stability.
 
-You will see a capture view on the left 
-You will see a web browser view on the right 
+## Building and Running on Device
 
-Every x seconds 
-The captured image is described 
-The captured image generates a new UI on the web browser 
+- **Build the APK:** Follow your usual build process to create the APK for Magic Leap 2.
+- **Run on Device:**
+  - Upon running, you will observe:
+    - A capture view on the left side of the screen.
+    - A web browser view on the right side of the screen.
+  - Every few seconds, the application:
+    - Describes the captured image.
+    - Updates the UI on the web browser based on the image analysis.
 
- 
+## Contribute
 
+Contributions are welcome! Please fork the repository and submit pull requests, or create issues for bugs and feature requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
