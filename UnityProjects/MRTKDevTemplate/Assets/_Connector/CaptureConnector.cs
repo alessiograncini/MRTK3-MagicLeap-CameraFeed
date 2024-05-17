@@ -16,7 +16,7 @@ public class CaptureConnector : MonoBehaviour
 
     public IEnumerator UploadImageToServerRecursive()
     {
-        yield return new WaitForSeconds(4); // Delay to simulate capture timing or processing
+        yield return new WaitForSeconds(10); // Delay to simulate capture timing or processing
        
         Texture2D texture = GetReadableTexture(ImageFeedbackUI.texture as Texture2D);
         if (texture != null)

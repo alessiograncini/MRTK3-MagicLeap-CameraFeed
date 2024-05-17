@@ -572,9 +572,9 @@ const handleSceneGeneration = async (
     "seconds"
   );
 
-  if (!lastId) {
+  //if (!lastId) {
     lastId = id;
-  }
+  //}
 
   await $`open http://localhost:3000/render/${id}`;
 };

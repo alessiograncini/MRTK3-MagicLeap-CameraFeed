@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_CameraFeed/Scenes/CameraFeed_01.unity
-    guid: a827b66341cdf41d1990025922200433
+    path: Assets/_CameraFeed/Scenes/CameraFeed_02_WebBrowser.unity
+    guid: be1bcb5fc150d445f97bbc24aef652af
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 87467803e919cef4394e7f39c6521b51, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e61946fb8f8ff5e418d6ebb56cca2034, type: 2}

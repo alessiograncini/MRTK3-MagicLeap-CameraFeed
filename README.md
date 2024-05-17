@@ -1,5 +1,22 @@
 # MRTK3-MagicLeap-CameraFeed
 
+
+## Latest Update (05.17.2024)
+I took a pass and simplified the set up for this project 
+If you don't want to go through the longer setup explained below
+
+Run the server located in 
+
+- MRTK3-MagicLeap-CameraFeed/UnityProjects/MRTKDevTemplate>SimplifiedServer.py
+
+Change the ip address in both (use the one of the machine running the server)
+
+- SimplifiedServerUnityBridge.cs
+- SimplifiedServer.py
+
+Build app, run the server before to launch it from the device. 
+
+
 This repository enhances the integration of vision models on Magic Leap 2 devices, utilizing the capabilities of the Mixed Reality Toolkit (MRTK3) based on the following sources:
 - [MRTK3 for Magic Leap 2 on GitHub](https://github.com/magicleap/MixedRealityToolkit-Unity/tree/mrtk3_MagicLeap2)
 - [Mistral Project on Devpost](https://devpost.com/software/mistral-oui)

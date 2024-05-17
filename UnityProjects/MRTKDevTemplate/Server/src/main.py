@@ -96,7 +96,8 @@ async def create_upload_file(file: UploadFile = File(...)):
         executor.submit(send_answer, uuid, answer, img)
         executor.submit(detect_object, uuid, img)
 
-    return JSONResponse({"id": uuid, "caption": answer, "url": f"https://localhost:8000/render/{uuid}"})
+    #return JSONResponse({"id": uuid, "caption": answer, "url": f"https://localhost:8000/render/{uuid}"})
+    return JSONResponse({"id": uuid, "caption": answer, "url": f"{uuid}"}) 
 
 if __name__ == "__main__":
     init_model()

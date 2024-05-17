@@ -8,8 +8,8 @@ public class ServerUnityBridge : MonoBehaviour
     public WebViewManager WebViewManager;
     public string Response;
     public string Feedback = "";
-    public float WaitTime = 39;
-    private string pythonServerURL = "http://192.168.68.100:8001/upload-image/";
+    public float WaitTime = 20;
+    private string pythonServerURL = "http://10.0.0.29:8001/upload-image/";
     private string responseID;
     private string caption;
     private string url;
@@ -56,7 +56,8 @@ public class ServerUnityBridge : MonoBehaviour
                 Debug.Log("Received URL: " + url);
                 Response = caption;// see in editor
                 yield return new WaitForSeconds(WaitTime);
-                WebViewManager.UpdateLink("http://192.168.68.100:8001/render/"+responseID);
+                WebViewManager.UpdateLink("http://10.0.0.29:8001/render/default");
+
             }
         }
     }
