@@ -1,21 +1,33 @@
-# MRTK3-MagicLeap-CameraFeed
-
-
 ## Latest Update (05.17.2024)
+
 I took a pass and simplified the set up for this project 
 If you don't want to go through the longer setup explained below
 
 Run the server located in 
 
-- MRTK3-MagicLeap-CameraFeed/UnityProjects/MRTKDevTemplate>SimplifiedServer.py
+- `MRTK3-MagicLeap-CameraFeed/UnityProjects/MRTKDevTemplate>SimplifiedServer.py`
 
-Change the ip address in both (use the one of the machine running the server)
+Change the IP address in both (use the one of the machine running the server)
 
-- SimplifiedServerUnityBridge.cs
-- SimplifiedServer.py
+- `SimplifiedServerUnityBridge.cs`
+- `SimplifiedServer.py`
 
 Build app, run the server before to launch it from the device. 
 
+Notes:
+
+- A custom script provided by Magic Leap Developers allows to capture the demo meanwhile executing capture from the device. This script is named `SimpleRGBCameraCapture` and its used is mainly for documentation purposes - this scripts tends to eventually crash the app after a while, needs more work. If not just go with the default camera capture, this will avoid crashes.
+
+- We make use of the web browser by Vuplex 
+Credits: https://developer.vuplex.com/webview/overview
+
+- This latest version take advantage of ChatGPT-4o, ChatGPT-4, not using the models listed below
+
+- Do you want to customize your UI generation? Look into `SimplifiedServer.py` in the latest section `def generate_additional_ui(description, category):`
+
+
+
+# MRTK3-MagicLeap-CameraFeed
 
 This repository enhances the integration of vision models on Magic Leap 2 devices, utilizing the capabilities of the Mixed Reality Toolkit (MRTK3) based on the following sources:
 - [MRTK3 for Magic Leap 2 on GitHub](https://github.com/magicleap/MixedRealityToolkit-Unity/tree/mrtk3_MagicLeap2)
